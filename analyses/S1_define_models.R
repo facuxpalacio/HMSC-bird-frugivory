@@ -1,17 +1,17 @@
-setwd("/Users/marijone/Documents/Mirkka Documents BAU/BAU projects/Hmsc course November 2020/Participant datasets/palacio_facundo")
-localDir = "."
-ModelDir = file.path(localDir, "models")
-DataDir = file.path(localDir, "data")
+
 library(Hmsc)
 
-load(file=file.path(DataDir,"allData_corr.R")) #S,X,Y,Tr,P
+X <- read.csv("../data/X.csv")
+Y <- read.csv("../data/Y.csv")
+S <- read.csv("../data/S.csv")
+Tr <- read.csv("../data/Tr.csv")
 
 # Y = number of fruit removed from Spiny Hackberry Celtis tala trees by each of 14 bird species.
 # Samples are observations of individual trees in three different years (2013-2015).
 
 # Check for always absent (always 0) or ubiquitous (1) Y data.
 range(colMeans(Y>0))
-#0.006329114 0.151898734
+#0.006329114 0.146496815
 
 min(colSums(Y>0))
 # =1.
@@ -34,7 +34,7 @@ hist(as.matrix(log(Y[Y>0])),main="log abundance conditional on presence")
 table(rowSums(Y>0))
 # bird species numbers removing fruit per tree/observation time (range from 0-4)
 
-X[, 2:7] = apply(X[, 2:7], 2, as.numeric)
+X[, 2:3] = apply(X[, 2:3], 2, as.numeric)
 plot(X)
 summary(X)
 X$log.Fruit_crop = log(X$Fruit_crop)
@@ -47,7 +47,6 @@ XFormula = ~Effort + log.Fruit_crop + xFruit_diameter + xSugar_concentration + x
 #cor(X[,c(2, 3, 4, 8, 9)])
 
 Tr = droplevels(Tr[-sparsedata,])
-Tr$log.Mass = log(Tr$Mass)
 Tr$log.Gape_width = log(Tr$Gape_width)
 plot(Tr)
 
