@@ -11,7 +11,7 @@ Tr <- read.csv("../data/Tr.csv")
 
 # Check for always absent (always 0) or ubiquitous (1) Y data.
 range(colMeans(Y>0))
-#0.006329114 0.146496815
+#0.006329114 0.145569620
 
 min(colSums(Y>0))
 # =1.
@@ -34,7 +34,7 @@ hist(as.matrix(log(Y[Y>0])),main="log abundance conditional on presence")
 table(rowSums(Y>0))
 # bird species numbers removing fruit per tree/observation time (range from 0-4)
 
-X[, 2:3] = apply(X[, 2:3], 2, as.numeric)
+X[, 2:4] = apply(X[, 2:4], 2, as.numeric)
 plot(X)
 summary(X)
 X$log.Fruit_crop = log(X$Fruit_crop)
@@ -44,10 +44,11 @@ X$Effort = as.factor(X$Effort)
 XFormula = ~Effort + log.Fruit_crop + xFruit_diameter + xSugar_concentration + xSeed_weight
 
 # Max. correlation between any two covariates = 0.47, between Seed weight and Fruit diameter.
-#cor(X[,c(2, 3, 4, 8, 9)])
+#cor(X[,1:4])
 
 Tr = droplevels(Tr[-sparsedata,])
 Tr$log.Gape_width = log(Tr$Gape_width)
+rownames(Tr) <- Tr$Species
 plot(Tr)
 
 # Handling = 2 categories (gulper vs pulp_consumer)
@@ -92,4 +93,4 @@ m2 = Hmsc(Y=Yabu, YScale = TRUE,
 models = list(m1, m2)
 modelnames = c("presence_absence","abundance_COP")
 
-save(models,modelnames,file = file.path(ModelDir, "unfitted_models.Rdata"))
+save(models,modelnames,file = file.path("unfitted_models.Rdata"))
