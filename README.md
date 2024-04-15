@@ -7,4 +7,6 @@ This repository contains data and code to reproduce analyses reported in the man
 
 **data**: includes the datasets analysed for this manuscript. 
 
+**stored results**: included the fitted models since HMSC takes a considerable amount of time to run.
+
 The names of all other files should be self-explanatory. If they are not, please open an issue in this repository.
