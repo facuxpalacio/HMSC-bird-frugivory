@@ -5,7 +5,34 @@ This repository contains data and code to reproduce analyses reported in the man
 
 **analyses**: contains code to reproduce analyses and figures.
 
-**data**: includes the datasets analysed for this manuscript. 
+**data**: includes the datasets analysed for this manuscript:
+- SPECIES DATA (Y.csv)
+  
+The species data consists of fruit consumption events of 14 bird species.
+
+- STUDY DESIGN (S.csv)
+  
+The study design contains frugivore visits to trees.
+
+The tree id is in the column "Tree" and its coordinates are in columns "Tree_x" (longitude) and "Tree_y" (latitude).
+
+The year of visit is in the column "Year".
+
+- COVARIATES (X)
+  
+Fruit_crop (discrete): number of ripe fruits.
+
+Sugar_concentration (continuous): mean sugar concentration (°Brix).
+
+Fruit_diameter (continuous): mean fruit diameter (mm).
+
+Effort (categorical): observation hours.
+
+- TRAITS (Tr)
+  
+Gape_width (continuous): gape width (mm).
+
+Handling (factor): fruit handling behavior (gulper or pulp consumer).
 
 **stored results**: includes the fitted models since HMSC takes a considerable amount of time to run.
 
