@@ -6,11 +6,11 @@ This repository contains data and code to reproduce analyses reported in the man
 **analyses**: contains code to reproduce analyses and figures.
 
 **data**: includes the datasets analysed for this manuscript:
-- SPECIES DATA (Y.csv)
+- SPECIES DATA (Y)
   
 The species data consists of fruit consumption events of 14 bird species.
 
-- STUDY DESIGN (S.csv)
+- STUDY DESIGN (S)
   
 The study design contains frugivore visits to trees.
 
